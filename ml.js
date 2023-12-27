@@ -72,6 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
         return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(amount * 1000);
     }
 
+    function generateOrderId() {
+        return Date.now().toString() + Math.random().toString(36).substring(2, 15);
+    }
+
     window.addToCart = addToCart;
     window.cancelOrder = cancelOrder;
     window.checkout = function () {
@@ -80,7 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             if (confirmation) {
                 var orderId = generateOrderId();
-                var midtransClientKey = 'Mid-client-G3QKXRp2Ff0dySnF';
+                var midtransClientKey = 'Mid-client-G3QKXRp2Ff0dySnF';  // Gantilah dengan kunci Midtrans yang valid
 
                 var midtransParams = {
                     transaction_details: {
@@ -97,7 +101,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         var customerData = prompt("Masukkan ID ML:");
 
                         if (customerData) {
-                            var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPembeli: ${customerData}`;
+                            var message = `Pembelian dari Zon Store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPembeli: ${customerData}`;
 
                             window.location.href = `https://wa.me/6285173138301?text=${encodeURIComponent(message)}`;
                             alert("Pesanan Anda telah berhasil. Terima kasih!");
@@ -121,14 +125,9 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 
-    function generateOrderId() {
-        return Date.now().toString() + Math.random().toString(36).substring(2, 15);
-    }
-
     function resetCart() {
         cart = [];
         total = 0;
         updateCart();
     }
 });
-
