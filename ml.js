@@ -19,6 +19,10 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "514 DM", description: "", price: 131.00, image: "ml.png" },
         { name: "600 DM", description: "", price: 151.00, image: "ml.png" },
         { name: "706 DM", description: "", price: 178.20, image: "ml.png" },
+        { name: "WDP", description: "Weekly diamond pass", 
+price: 28.500, image: "wdp.png" },
+        { name: "WDP 2x", description: "Weekly diamond pass", 
+price: 55.400, image: "wdp.png" },
         
         // Tambahkan produk lainnya sesuai kebutuhan
     ];
@@ -30,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productArticle.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
-            <p>${product.description}.Harga: ${formatRupiah(product.price)}</p>
+            <p>${product.description}  Harga: ${formatRupiah(product.price)}</p>
             <button onclick="addToCart('${product.name}', ${product.price})">Beli</button>
         `;
         productsContainer.appendChild(productArticle);
@@ -94,3 +98,4 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     };
 });
+
