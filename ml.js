@@ -83,7 +83,7 @@ price: 55.400, image: "wdp.png" },
             var confirmation = confirm(`Total belanja Anda: ${formatRupiah(total)}\nApakah Anda ingin melanjutkan pembayaran?`);
 
             if (confirmation) {
-                var customerData = prompt("Masukan id ml ):");
+                var customerData = prompt("Masukan ID(SERVER ):");
 
                 if (customerData) {
                     var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPembeli: ${customerData}`;
