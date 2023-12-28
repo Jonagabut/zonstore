@@ -19,12 +19,9 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "514 DM", description: "", price: 131.00, image: "ml.png" },
         { name: "600 DM", description: "", price: 151.00, image: "ml.png" },
         { name: "706 DM", description: "", price: 178.20, image: "ml.png" },
-        { name: "WDP", description: "Weekly diamond pass", 
-price: 28.500, image: "wdp.png" },
-        { name: "WDP 2x", description: "Weekly diamond pass", 
-price: 55.400, image: "wdp.png" },
-        
-        // Tambahkan produk lainnya sesuai kebutuhan
+        { name: "WDP", description: "Weekly diamond pass", price: 28.500, image: "wdp.png" },
+        { name: "WDP 2x", description: "Weekly diamond pass", price: 55.400, image: "wdp.png" },
+        // Add more products as needed
     ];
 
     var cart = [];
@@ -79,18 +76,28 @@ price: 55.400, image: "wdp.png" },
     window.cancelOrder = cancelOrder;
     window.checkout = function () {
         if (cart.length > 0) {
-            // Implementasi logika pembayaran di sini (contoh sederhana hanya mengonfirmasi)
             var confirmation = confirm(`Total belanja Anda: ${formatRupiah(total)}\nApakah Anda ingin melanjutkan pembayaran?`);
 
             if (confirmation) {
-                var customerData = prompt("Masukan ID(SERVER ):");
+                var customerName = prompt("Masukkan nama akun:");
 
-                if (customerData) {
-                    var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPembeli: ${customerData}`;
+                if (customerName) {
+                    var nameConfirmation = confirm(`Konfirmasi nama Anda: ${customerName}\nApakah nama Anda sudah benar?`);
 
-                    window.location.href = `https://wa.me/6285173138301?text=${encodeURIComponent(message)}`;
-                    // Setelah mengirim data ke WhatsApp, Anda dapat mereset keranjang belanja atau melakukan langkah lainnya sesuai kebutuhan
-                    alert("Pesanan Anda telah berhasil. Terima kasih!");
+                    if (nameConfirmation) {
+                        var customerId = prompt("Masukkan ID (SERVER):");
+
+                        if (customerId) {
+                            var idConfirmation = confirm(`Konfirmasi ID Anda: ${customerId}\nApakah ID Anda sudah benar?`);
+
+                            if (idConfirmation) {
+                                var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPelanggan: ${customerName}\nID Pelanggan: ${customerId}`;
+
+                                window.location.href = `https://wa.me/6285173138301?text=${encodeURIComponent(message)}`;
+                                alert("Pesanan Anda telah berhasil. Terima kasih!");
+                            }
+                        }
+                    }
                 }
             }
         } else {
@@ -98,5 +105,3 @@ price: 55.400, image: "wdp.png" },
         }
     };
 });
-
-
