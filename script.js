@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (confirmation) {
                     var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPelanggan: ${customerName}\nID Pelanggan: ${customerId}`;
 
-                    window.location.href = `https://wa.me/6285173138301?text=${encodeURIComponent(message)}`;
+                    window.location.href = `https://wa.me/6285176708301?text=${encodeURIComponent(message)}`;
                     alert("Pesanan Anda telah berhasil. Terima kasih!");
                 }
             }
