@@ -5,20 +5,18 @@ document.addEventListener("DOMContentLoaded", function () {
     var total = 0;
 
     var products = [
-        { name: "14 DM", description: "", price: 4.50, image: "ml.png" },
-        { name: "28 DM", description: "", price: 8.40, image: "ml.png" },
-        { name: "42 DM", description: "", price: 12.20, image: "ml.png" },
-        { name: "74 DM", description: "", price: 19.00, image: "ml.png" },
-        { name: "100 DM", description: "", price: 26.90, image: "ml.png" },
-        { name: "172 DM", description: "", price: 45.00, image: "ml.png" },
-        { name: "222 DM", description: "", price: 57.00, image: "ml.png" },
-        { name: "284 DM", description: "", price: 73.80, image: "ml.png" },
-        { name: "355 DM", description: "", price: 90.90, image: "ml.png" },
-        { name: "408 DM", description: "", price: 104.40, image: "ml.png" },
-        { name: "429 DM", description: "", price: 111.00, image: "ml.png" },
-        { name: "514 DM", description: "", price: 131.00, image: "ml.png" },
-        { name: "600 DM", description: "", price: 151.00, image: "ml.png" },
-        { name: "706 DM", description: "", price: 178.20, image: "ml.png" },
+        { name: "50 DM", description: "", price: 7.000, image: "ff.png" },
+        { name: "70 DM", description: "", price: 10.000, image: "ff.png" },
+        { name: "120 DM", description: "", price: 16.700, image: "ff.png" },
+        { name: "145 DM", description: "", price: 20.000, image: "ff.png" },
+        { name: "190 DM", description: "", price: 26.500, image: "ff.png" },
+        { name: "200 DM", description: "", price: 27.000, image: "ff.png" },
+        { name: "280 DM", description: "", price: 37.000, image: "ff.png" },
+        { name: "300 DM", description: "", price: 40.500, image: "ff.png" },
+        { name: "360 DM ", description: "", price: 49.000, image: "ff.png" },
+        { name: "425 DM", description: "", price: 56.500, image: "ff.png" },
+        { name: "475 DM", description: "", price: 62.000, image: "ff.png" },
+        { name: "510 DM", description: "", price: 67.00, image: "ff.png" },
         
         // Tambahkan produk lainnya sesuai kebutuhan
     ];
