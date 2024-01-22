@@ -81,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (customerData) {
                     var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPembeli: ${customerData}`;
 
-                    window.location.href = `https://wa.me/6285173138301?text=${encodeURIComponent(message)}`;
+                    window.location.href = `https://wa.me/6285176708301?text=${encodeURIComponent(message)}`;
                     // Setelah mengirim data ke WhatsApp, Anda dapat mereset keranjang belanja atau melakukan langkah lainnya sesuai kebutuhan
                     alert("Pesanan Anda telah berhasil. Terima kasih!");
                 }
