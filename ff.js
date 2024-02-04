@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     var cartTotal = document.getElementById("cart-total");
     var total = 0;
 
-    var products = [
+   var products = [
         { name: "50 DM", description: "", price: 7.000, image: "ff.png" },
         { name: "70 DM", description: "", price: 10.000, image: "ff.png" },
         { name: "120 DM", description: "", price: 16.700, image: "ff.png" },
@@ -17,8 +17,6 @@ document.addEventListener("DOMContentLoaded", function () {
         { name: "425 DM", description: "", price: 56.500, image: "ff.png" },
         { name: "475 DM", description: "", price: 62.000, image: "ff.png" },
         { name: "510 DM", description: "", price: 67.00, image: "ff.png" },
-        
-        // Tambahkan produk lainnya sesuai kebutuhan
     ];
 
     var cart = [];
@@ -73,18 +71,18 @@ document.addEventListener("DOMContentLoaded", function () {
     window.cancelOrder = cancelOrder;
     window.checkout = function () {
         if (cart.length > 0) {
-            // Implementasi logika pembayaran di sini (contoh sederhana hanya mengonfirmasi)
-            var confirmation = confirm(`Total belanja Anda: ${formatRupiah(total)}\nApakah Anda ingin melanjutkan pembayaran?`);
+            var customerName = prompt("Masukkan nama akun:");
+            var customerId = prompt("Masukkan ID akun:");
 
-            if (confirmation) {
-                var customerData = prompt("Masukan id ml ):");
+            if (customerName && customerId) {
+                // Menyimpan data pelanggan dalam URL query string
+                var queryString = `?name=${encodeURIComponent(customerName)}&id=${encodeURIComponent(customerId)}&total=${encodeURIComponent(total)}`;
 
-                if (customerData) {
-                    var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPembeli: ${customerData}`;
+                var confirmation = confirm(`Konfirmasi data pelanggan:\nNama: ${customerName}\nID PUBG: ${customerId}\n\nTotal belanja Anda: ${formatRupiah(total)}\nApakah Anda ingin melanjutkan pembayaran?`);
 
-                    window.location.href = `https://wa.me/6285176708301?text=${encodeURIComponent(message)}`;
-                    // Setelah mengirim data ke WhatsApp, Anda dapat mereset keranjang belanja atau melakukan langkah lainnya sesuai kebutuhan
-                    alert("Pesanan Anda telah berhasil. Terima kasih!");
+                if (confirmation) {
+                    // Mengarahkan ke halaman "pembayaran.html" dengan query string
+                    window.location.href = "pembayaran.html" + queryString;
                 }
             }
         } else {
