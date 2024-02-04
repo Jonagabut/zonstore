@@ -26,7 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
         productArticle.innerHTML = `
             <img src="${product.image}" alt="${product.name}">
             <h2>${product.name}</h2>
-            <p>${product.description}.Harga: ${formatRupiah(product.price)}</p>
+            <p>${product.description}  Harga: ${formatRupiah(product.price)}</p>
             <button onclick="addToCart('${product.name}', ${product.price})">Beli</button>
         `;
         productsContainer.appendChild(productArticle);
@@ -71,18 +71,29 @@ document.addEventListener("DOMContentLoaded", function () {
     window.cancelOrder = cancelOrder;
     window.checkout = function () {
         if (cart.length > 0) {
-            var customerName = prompt("Masukkan nama akun:");
-            var customerId = prompt("Masukkan ID akun:");
+            var confirmation = confirm(`Total belanja Anda: ${formatRupiah(total)}\nApakah Anda ingin melanjutkan pembayaran?`);
 
-            if (customerName && customerId) {
-                // Menyimpan data pelanggan dalam URL query string
-                var queryString = `?name=${encodeURIComponent(customerName)}&id=${encodeURIComponent(customerId)}&total=${encodeURIComponent(total)}`;
+            if (confirmation) {
+                var customerName = prompt("Masukkan nama akun:");
 
-                var confirmation = confirm(`Konfirmasi data pelanggan:\nNama: ${customerName}\nID PUBG: ${customerId}\n\nTotal belanja Anda: ${formatRupiah(total)}\nApakah Anda ingin melanjutkan pembayaran?`);
 
-                if (confirmation) {
-                    // Mengarahkan ke halaman "pembayaran.html" dengan query string
-                    window.location.href = "pembayaran.html" + queryString;
+                if (customerName) {
+                    var nameConfirmation = confirm(`Konfirmasi nama Anda: ${customerName}\nApakah nama Anda sudah benar?`);
+
+                    if (nameConfirmation) {
+                        var customerId = prompt("Masukkan ID:");
+
+                        if (customerId) {
+                            var idConfirmation = confirm(`Konfirmasi ID Anda: ${customerId}\nApakah ID Anda sudah benar?`);
+
+                            if (idConfirmation) {
+                                var message = `Pembelian dari zon store:\n\n${cart.map(item => `${item.name} - ${formatRupiah(item.price)}`).join('\n')}\n\nTotal: ${formatRupiah(total)}\n\nPelanggan: ${customerName}\nID Pelanggan: ${customerId}`;
+
+                                window.location.href = `https://wa.me/6285173138301?text=${encodeURIComponent(message)}`;
+                                alert("Pesanan Anda telah berhasil. Terima kasih!");
+                            }
+                        }
+                    }
                 }
             }
         } else {
